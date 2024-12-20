@@ -1,0 +1,9 @@
+# ENV
+.env
+
+# CSV files
+/files
+/checkfiles
+
+#MacOS
+.DS_Store
