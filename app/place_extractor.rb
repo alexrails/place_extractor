@@ -77,7 +77,6 @@ class PlaceExtractor
   end
 
   def scanned_percentage
-    return 0 if @scanned_area.zero?
     return 100 if @scanned_area >= @total_area
 
     (@scanned_area / @total_area.to_f * 100).round(2)
