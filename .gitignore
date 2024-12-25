@@ -2,8 +2,9 @@
 .env
 
 # CSV files
-/files
+/results
 /checkfiles
+/logs
 
 #MacOS
 .DS_Store
