@@ -4,7 +4,7 @@ require_relative 'validator'
 
 class Interface
   def self.render_table(radius, requests_number, scanned_percentage, coordinates)
-    print "\e[H\e[2J"
+    system('clear') || system('cls')
     puts "START RADIUS: #{@start_radius} m"
     puts "QUERY LIMIT: #{@query_limit}"
     puts "TYPE: #{@type}"
