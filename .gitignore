@@ -6,5 +6,8 @@
 /checkfiles
 /logs
 
-#MacOS
+# MacOS
 .DS_Store
+
+# Rbenv
+.ruby-version
