@@ -11,7 +11,7 @@ class CSVWriter
 
     FileUtils.mkdir_p(File.dirname(path))
     CSV.open(path, 'wb') do |csv|
-      csv << ['ID', 'Name', 'Address', 'Rating', 'Type', 'Coordinates', 'Website']
+      csv << ['ID', 'Name', 'Address', 'Rating', 'Type', 'Coordinates', 'Business status', 'User ratings total']
 
       results.each do |place|
         csv << [
@@ -21,7 +21,8 @@ class CSVWriter
           place['rating'],
           place['types'].join(', '),
           place['geometry']['location'].values.join(', '),
-          place['website']
+          place['business_status'],
+          place['user_ratings_total']
         ]
       end
     end
