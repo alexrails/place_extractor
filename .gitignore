@@ -11,3 +11,5 @@
 
 # Rbenv
 .ruby-version
+
+Gemfile.lock

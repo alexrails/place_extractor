@@ -12,7 +12,8 @@ RSpec.describe CSVWriter do
         'rating' => 4.5,
         'types' => ['restaurant', 'bar'],
         'geometry' => { 'location' => { 'lat' => 40.7128, 'lng' => -74.0060 } },
-        'website' => 'http://testplace.com'
+        'business_status' => 'status',
+        'user_ratings_total' => 13
       }
     ]
   end
@@ -35,9 +36,9 @@ RSpec.describe CSVWriter do
     expect(File).to exist(csv_file)
 
     csv_content = CSV.read(csv_file)
-    expect(csv_content[0]).to eq(['ID', 'Name', 'Address', 'Rating', 'Type', 'Coordinates', 'Website'])
+    expect(csv_content[0]).to eq(['ID', 'Name', 'Address', 'Rating', 'Type', 'Coordinates', 'Business status', 'User ratings total'])
     expect(csv_content[1]).to eq(
-      ['123', 'Test Place', '123 Test St', '4.5', 'restaurant, bar', '40.7128, -74.006', 'http://testplace.com']
+      ['123', 'Test Place', '123 Test St', '4.5', 'restaurant, bar', '40.7128, -74.006', 'status', '13']
     )
   end
 end
