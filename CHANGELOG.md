@@ -1,11 +1,21 @@
-# Changelog
-
-## [v0.2.0] - 2024-12-25
-Bump application to v0.2.0
-
-## [v0.3.0] - 2024-12-26
-Bump application to v0.3.0
+## [v0.4.1] - 2024-12-29
+- chore: Add all commits to changelog file (Alex Korzun)
 
 ## [v0.4.0] - 2024-12-27
-Bump application to v0.4.0
+- feat: Add business status to results
+- chore(gitignore): Ignore rbenv file and Gemfile.lock
+- feat(rspec): Add RSpec tests
+- fix(table): Clear table
 
+## [v0.3.0] - 2024-12-26
+- fix(render_table): Fix clearing table
+
+## [v0.2.0] - 2024-12-25
+- chore(rakefile): Add Rakefile
+- fix(render table): Percentage zero
+- chore(ruby): Support ruby v3.4.0
+
+## [v0.1.0] - 2024-12-25
+- feat(readme): Add Readme file
+- feat: Add logger and interface
+- Initial commit
