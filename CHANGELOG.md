@@ -1,3 +1,6 @@
+## [v0.4.1] - 2024-12-29
+- chore: Add all commits to changelog file (Alex Korzun)
+
 # Changelog
 
 ## [v0.2.0] - 2024-12-25
