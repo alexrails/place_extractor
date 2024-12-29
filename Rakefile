@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rake'
 
 namespace :release do
@@ -29,10 +31,31 @@ namespace :release do
       end
     end
 
-    # Append the new release notes to CHANGELOG.md
-    File.open(changelog_path, 'a') do |file|
-      file.puts "## [#{version}] - #{Time.now.strftime('%Y-%m-%d')}"
-      file.puts "Bump application to #{version}\n\n"
+    # Find the previous tag
+    previous_tag = `git describe --tags --abbrev=0`.strip
+    unless $?.success?
+      puts "Error: Unable to find the previous tag. Is this the first release?"
+      exit 1
+    end
+
+    # Get commits between the last tag and the new tag
+    commits = `git log #{previous_tag}..HEAD --pretty=format:"- %s (%an)"`.strip.split("\n")
+    if commits.empty?
+      puts "No new commits to include in the changelog since the previous tag #{previous_tag}."
+      exit 1
+    end
+
+    # Prepare new changelog content
+    new_changelog_content = []
+    new_changelog_content << "## [#{version}] - #{Time.now.strftime('%Y-%m-%d')}"
+    new_changelog_content.concat(commits)
+    new_changelog_content << "\n"
+
+    # Insert new content at the top of the changelog
+    existing_changelog = File.read(changelog_path)
+    File.open(changelog_path, 'w') do |file|
+      file.puts(new_changelog_content.join("\n"))
+      file.puts(existing_changelog)
     end
 
     # Stage and commit the updated CHANGELOG.md
