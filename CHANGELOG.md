@@ -1,3 +1,8 @@
+## [v0.5.0] - 2025-01-12
+- feat: handle http errors (Alex Korzun)
+- Bump application to v0.4.1 (Alex Korzun)
+- chore: Add all commits to changelog file (Alex Korzun)
+
 ## [v0.4.1] - 2024-12-29
 - chore: Add all commits to changelog file (Alex Korzun)
 
