@@ -1,3 +1,6 @@
+## [v0.6.1] - 2025-03-04
+- fix: Support multiple area scan (Alex Korzun)
+
 ## [v0.6.0] - 2025-03-04
 - feat: Multiple areas scan support (Alex Korzun)
 
