@@ -16,7 +16,7 @@ It allows users to specify coordinates, radius, organization type, and query lim
 
   1. Clone the repository:
     ```bash
-      git clone https://github.com/your-repo/place_extractor.git
+      git clone https://github.com/alexrails/place_extractor.git
       cd place_extractor
     ```
 

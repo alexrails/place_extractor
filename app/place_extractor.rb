@@ -26,7 +26,10 @@ class PlaceExtractor
   end
 
   def organizations
-    scan_area(@coordinates, @radius, @radius)
+    @coordinates.each do |coordinate|
+      scan_area(coordinate, @radius, @radius)
+    end
+
     remove_duplicates
     write_to_csv
     running_complete

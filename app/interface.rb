@@ -29,9 +29,15 @@ class Interface
 
   def self.coordinates
     handle_errors do
+      puts "For multiple areas, please enter the coordinates of the area you want to scan (latitude,longitude) separated by ;"
+      puts "Example: 40.7128,-74.0060;41.8781,-87.6298"
       puts "Please enter the coordinates of the area you want to scan (latitude,longitude):"
-      @start_coordinates = gets.chomp
-      Validator.validate_coordinates(@start_coordinates)
+      @start_coordinates = gets.chomp.split(';')
+
+      @start_coordinates.each do |coordinates|
+        Validator.validate_coordinates(coordinates)
+      end
+
       @start_coordinates
     end
   end
