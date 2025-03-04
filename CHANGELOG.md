@@ -1,3 +1,6 @@
+## [v0.6.0] - 2025-03-04
+- feat: Multiple areas scan support (Alex Korzun)
+
 ## [v0.5.0] - 2025-01-12
 - feat: handle http errors (Alex Korzun)
 - Bump application to v0.4.1 (Alex Korzun)
