@@ -19,14 +19,16 @@ class PlaceExtractor
     @radius = Interface.radius
     @query_limit = Interface.query_limit || OVER_QUERY_LIMIT
     @type = Interface.type
-    @scanned_area = 0
     @all_results = []
     @total_area = area_size(@radius)
     logger.info("Coordinates: #{@coordinates}, Radius: #{@radius}, Type: #{@type}, Query limit: #{@query_limit}")
   end
 
   def organizations
-    @coordinates.each do |coordinate|
+    @coordinates.each_with_index do |coordinate, index|
+      @coord_index = index + 1
+      @scanned_area = 0
+      logger.info("Scanning area #{@coord_index} of #{@coordinates.count}")
       scan_area(coordinate, @radius, @radius)
     end
 
@@ -44,7 +46,7 @@ class PlaceExtractor
     results = place_api.fetch_organizations(coordinates, radius, @type)
 
     logger.info("Scanning area: #{coordinates}, radius: #{radius}, results: #{results.count}, request_counter: #{request_counter}, scanned_percentage: #{scanned_percentage}")
-    Interface.render_table(radius, request_counter, scanned_percentage, coordinates)
+    Interface.render_table(radius, request_counter, scanned_percentage, coordinates, @coord_index)
 
     if results.count >= MAX_PLACES_PER_REQUEST && radius > MINIMAL_RADIUS
       offset = square_size / 2

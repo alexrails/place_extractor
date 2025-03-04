@@ -3,11 +3,12 @@
 require_relative 'validator'
 
 class Interface
-  def self.render_table(radius, requests_number, scanned_percentage, coordinates)
+  def self.render_table(radius, requests_number, scanned_percentage, coordinates, index)
     system('clear') || system('cls')
     puts "START RADIUS: #{@start_radius} m"
     puts "QUERY LIMIT: #{@query_limit}"
     puts "TYPE: #{@type}"
+    puts "SCAN #{index} from #{@start_coordinates.count} coordinates"
     puts "CURRENT COORDINATES: #{coordinates}"
     puts "-------------------------------------------"
     puts "|  Radius, m |Requests number| Percentage |"
@@ -29,7 +30,7 @@ class Interface
 
   def self.coordinates
     handle_errors do
-      puts "For multiple areas, please enter the coordinates of the area you want to scan (latitude,longitude) separated by ;"
+      puts "For multiple areas, please enter the coordinates of the area you want to scan (latitude,longitude) separated by (;)"
       puts "Example: 40.7128,-74.0060;41.8781,-87.6298"
       puts "Please enter the coordinates of the area you want to scan (latitude,longitude):"
       @start_coordinates = gets.chomp.split(';')
